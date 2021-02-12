@@ -1,3 +1,3 @@
 datasets/*
 *.bak
-/.spyproject/config/workspace.ini
+.spyproject/config/workspace.ini

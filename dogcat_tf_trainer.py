@@ -27,6 +27,7 @@ categories = ["cat","dog"]
 IMG_SIZE = 224
 
 training_data = []
+training_file_info = []
 
 x = []
 y = []
@@ -146,6 +147,16 @@ else:
     print('테스트용 강아지 이미지 갯수:',len(os.listdir(test_dogs_dir)))
     
 
+def preload_file_name(max_file_num,categories,dirs,file_info):
+    for categorie in categories:
+        path = os.path.join(dirs,categorie +'s')
+        class_num = categories.index(categorie)
+        ctfiles = os.listdir(path)
+        ctotal_file_num = np.minimum(max_file_num,len(os.listdir(path)))
+        files = [ctfiles[i] for i in range(0,ctotal_file_num)]
+        for file in files:
+            file_info.append([file,class_num])
+
 #------------- 영상 복사 여기까지 --------------
 def create_training_data(max_files):
 
@@ -162,6 +173,12 @@ def create_training_data(max_files):
             except Exception as e:
                 pass
 
+preload_file_name(100,categories,train_dir,training_file_info)
+
+random.shuffle(training_file_info)
+
+
+"""
 create_training_data(1000)
 
 random.shuffle(training_data)
@@ -192,3 +209,4 @@ model.add(layers.Dense(1,activation='sigmoid'))
 model.compile(loss='binary_crossentropy', optimizer=optimizers.RMSprop(lr=1e-4),metrics=['acc'])
 
 model.summary()
+"""
