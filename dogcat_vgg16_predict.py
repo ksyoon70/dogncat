@@ -44,9 +44,9 @@ if len(os.listdir(test_dir)):
             preds = model.predict(img_tensor)
             
             if preds[0] > 0.5:
-                tilestr = 'prediction:' + 'dog'
+                tilestr = 'predict:' + 'dog' + '  probability:' +  str(preds[0]*100) + ' %'
             else:
-                tilestr = 'prediction:' + 'cat'
+                tilestr = 'predict:' + 'cat' + '  probability:' +  str((1-preds[0])*100) + ' %'
         
             plt.title(tilestr)
             plt.imshow(img_tensor[0])
