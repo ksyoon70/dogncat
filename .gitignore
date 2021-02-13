@@ -2,3 +2,7 @@ datasets/*
 *.bak
 .spyproject/config/workspace.ini
 cats_and_dogs_small_3.h5
+
+__MACOSX/._datasets
+
+__MACOSX/datasets/

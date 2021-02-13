@@ -17,6 +17,9 @@ from keras import models
 from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
 
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
+config = tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 original_dataset_dir = './datasets/training_set'
 original_dataset_cats_dir = os.path.join(original_dataset_dir,'cats')
