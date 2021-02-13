@@ -16,14 +16,21 @@ from keras import layers
 from keras import models
 from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
+from keras.preprocessing import image
+from keras.applications.vgg16 import preprocess_input, decode_predictions
 
+
+"""
+#GPU 사용시 풀어 놓을 것
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
 config = tf.config.experimental.set_memory_growth(physical_devices[0], True)
+"""
 
 original_dataset_dir = './datasets/training_set'
 original_dataset_cats_dir = os.path.join(original_dataset_dir,'cats')
 original_dataset_dogs_dir = os.path.join(original_dataset_dir,'dogs')
+
 
 categories = ["cat","dog"]
 
@@ -237,3 +244,4 @@ plt.legend()
 plt.figure()
 
 plt.show()
+
